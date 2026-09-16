@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Smoke Box | Midtown Houston</title>
+
+<style>
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #050505;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    overflow-x: hidden;
+}
+
+/* =========================
+   HEXAGON LIGHT BACKGROUND
+========================= */
+
+.hex-background {
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    overflow: hidden;
+    background: #050505;
+}
+
+.hex-grid {
+    position: absolute;
+    width: 120%;
+    height: 120%;
+    left: -10%;
+    top: -10%;
+
+    background-image:
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='130' viewBox='0 0 150 130'%3E%3Cpath d='M37.5 3 L112.5 3 L147 65 L112.5 127 L37.5 127 L3 65 Z' fill='none' stroke='white' stroke-width='2' opacity='.55'/%3E%3C/svg%3E");
+
+    background-size: 150px 130px;
+
+    transform: perspective(700px) rotateX(8deg) scale(1.15);
+
+    filter:
+        drop-shadow(0 0 5px rgba(255,255,255,.8))
+        drop-shadow(0 0 15px rgba(255,255,255,.35));
+
+    opacity: .28;
+}
+
+/* Dark overlay keeps the lights behind the website */
+
+.hex-overlay {
+    position: absolute;
+    inset: 0;
+
+    background:
+        radial-gradient(
+            circle at 50% 25%,
+            rgba(0,0,0,.05),
+            rgba(0,0,0,.88) 70%
+        );
+
+    z-index: 1;
+}
+
+/* =========================
+   NAVIGATION
+========================= */
+
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+
+    background: rgba(5,5,5,.72);
+    backdrop-filter: blur(15px);
+
+    border-bottom: 1px solid rgba(255,255,255,.08);
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: auto;
+
+    padding: 20px 30px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: 900;
+    letter-spacing: 3px;
+}
+
+.logo span {
+    color: #c8ff00;
+}
+
+.nav-links {
+    display: flex;
+    gap: 30px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    transition: .2s;
+}
+
+.nav-links a:hover {
+    color: #c8ff00;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+    padding: 120px 25px 80px;
+
+    position: relative;
+}
+
+.hero-content {
+    max-width: 900px;
+}
+
+.location {
+    color: #c8ff00;
+    font-size: 13px;
+    font-weight: 900;
+    letter-spacing: 5px;
+    margin-bottom: 25px;
+}
+
+.hero h1 {
+    font-size: clamp(65px, 12vw, 150px);
+
+    font-weight: 950;
+
+    letter-spacing: -7px;
+
+    line-height: .85;
+
+    text-shadow:
+        0 0 20px rgba(255,255,255,.08);
+}
+
+.hero h1 span {
+    color: #c8ff00;
+
+    text-shadow:
+        0 0 20px rgba(200,255,0,.35);
+}
+
+.hero p {
+    max-width: 650px;
+
+    margin: 35px auto;
+
+    color: #c5c5c5;
+
+    font-size: 19px;
+
+    line-height: 1.7;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+
+    flex-wrap: wrap;
+}
+
+.button {
+    padding: 15px 28px;
+
+    border-radius: 50px;
+
+    text-decoration: none;
+
+    font-weight: 900;
+
+    font-size: 13px;
+
+    letter-spacing: 1px;
+
+    transition: .25s;
+}
+
+.primary {
+    background: #c8ff00;
+    color: black;
+
+    box-shadow:
+        0 0 20px rgba(200,255,0,.2);
+}
+
+.secondary {
+    border: 1px solid rgba(255,255,255,.3);
+
+    color: white;
+
+    background: rgba(255,255,255,.04);
+}
+
+.button:hover {
+    transform: translateY(-3px);
+}
+
+.age-notice {
+    margin-top: 25px;
+
+    color: #888;
+
+    font-size: 12px;
+}
+
+/* =========================
+   SECTIONS
+========================= */
+
+section {
+    max-width: 1200px;
+
+    margin: auto;
+
+    padding: 100px 30px;
+}
+
+.section-label {
+    color: #c8ff00;
+
+    font-size: 12px;
+
+    font-weight: 900;
+
+    letter-spacing: 3px;
+}
+
+section h2 {
+    font-size: 48px;
+
+    margin: 12px 0 45px;
+
+    letter-spacing: -2px;
+}
+
+/* =========================
+   PRODUCTS
+========================= */
+
+.product-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 20px;
+}
+
+.product-card {
+    min-height: 210px;
+
+    padding: 30px;
+
+    border-radius: 20px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.07),
+            rgba(255,255,255,.025)
+        );
+
+    border: 1px solid rgba(255,255,255,.1);
+
+    backdrop-filter: blur(10px);
+
+    transition: .3s;
+}
+
+.product-card:hover {
+    transform: translateY(-6px);
+
+    border-color: rgba(200,255,0,.5);
+
+    box-shadow:
+        0 15px 40px rgba(0,0,0,.5);
+}
+
+.product-icon {
+    font-size: 32px;
+
+    margin-bottom: 20px;
+}
+
+.product-card h3 {
+    font-size: 22px;
+
+    margin-bottom: 10px;
+}
+
+.product-card p {
+    color: #999;
+
+    line-height: 1.6;
+}
+
+/* =========================
+   ABOUT
+========================= */
+
+.about-box {
+    background:
+        rgba(255,255,255,.04);
+
+    border: 1px solid rgba(255,255,255,.1);
+
+    border-radius: 25px;
+
+    padding: 45px;
+
+    backdrop-filter: blur(12px);
+}
+
+.about-box p {
+    color: #bbb;
+
+    font-size: 17px;
+
+    line-height: 1.8;
+
+    margin-bottom: 15px;
+}
+
+/* =========================
+   VISIT
+========================= */
+
+.visit-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 20px;
+}
+
+.info-box {
+    padding: 35px;
+
+    border-radius: 22px;
+
+    background: rgba(255,255,255,.04);
+
+    border: 1px solid rgba(255,255,255,.1);
+}
+
+.info-box h3 {
+    font-size: 24px;
+
+    margin-bottom: 20px;
+}
+
+.info-box p {
+    color: #aaa;
+
+    margin: 8px 0;
+}
+
+.info-box strong {
+    color: white;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    border-top: 1px solid rgba(255,255,255,.1);
+
+    text-align: center;
+
+    padding: 40px 20px;
+
+    color: #666;
+
+    font-size: 12px;
+}
+
+footer strong {
+    color: #c8ff00;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width: 750px) {
+
+    .nav-links {
+        display: none;
+    }
+
+    .hero h1 {
+        letter-spacing: -4px;
+    }
+
+    section h2 {
+        font-size: 36px;
+    }
+
+    .product-grid,
+    .visit-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .about-box {
+        padding: 30px;
+    }
+
+    .hex-grid {
+        transform:
+            perspective(500px)
+            rotateX(5deg)
+            scale(1.3);
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- HEXAGON LIGHTS -->
+
+<div class="hex-background">
+
+    <div class="hex-grid"></div>
+
+    <div class="hex-overlay"></div>
+
+</div>
+
+
+<!-- NAVIGATION -->
+
+<nav>
+
+    <div class="nav-container">
+
+        <div class="logo">
+            SMOKE <span>BOX</span>
+        </div>
+
+        <div class="nav-links">
+
+            <a href="#shop">SHOP</a>
+
+            <a href="#about">ABOUT</a>
+
+            <a href="#visit">VISIT</a>
+
+            <a href="#contact">CONTACT</a>
+
+        </div>
+
+    </div>
+
+</nav>
+
+
+<!-- HERO -->
+
+<header class="hero">
+
+    <div class="hero-content">
+
+        <div class="location">
+            MIDTOWN HOUSTON
+        </div>
+
+        <h1>
+            SMOKE <span>BOX</span>
+        </h1>
+
+        <p>
+            Your Midtown Houston smoke shop.
+            Explore the shop, check out what's available,
+            and come see us in person.
+        </p>
+
+        <div class="buttons">
+
+            <a
+                class="button primary"
+                href="#shop">
+                EXPLORE SHOP
+            </a>
+
+            <a
+                class="button secondary"
+                href="#visit">
+                FIND US
+            </a>
+
+        </div>
+
+        <div class="age-notice">
+            21+ to purchase tobacco, e-cigarette
+            and other age-restricted products.
+        </div>
+
+    </div>
+
+</header>
+
+
+<!-- SHOP -->
+
+<section id="shop">
+
+    <div class="section-label">
+        THE SHOP
+    </div>
+
+    <h2>
+        What are you looking for?
+    </h2>
+
+    <div class="product-grid">
+
+        <div class="product-card">
+
+            <div class="product-icon">◉</div>
+
+            <h3>
+                Vapes & Devices
+            </h3>
+
+            <p>
+                Browse available devices
+                and related accessories
+                in store.
+            </p>
+
+        </div>
+
+
+        <div class="product-card">
+
+            <div class="product-icon">◇</div>
+
+            <h3>
+                Glass
+            </h3>
+
+            <p>
+                Explore glass pieces
+                and accessories available
+                at Smoke Box.
+            </p>
+
+        </div>
+
+
+        <div class="product-card">
+
+            <div class="product-icon">✦</div>
+
+            <h3>
+                Rolling Supplies
+            </h3>
+
+            <p>
+                Papers, cones, grinders
+                and other rolling accessories.
+            </p>
+
+        </div>
+
+
+        <div class="product-card">
+
+            <div class="product-icon">◎</div>
+
+            <h3>
+                Hookah
+            </h3>
+
+            <p>
+                Hookah products and
+                accessories for your setup.
+            </p>
+
+        </div>
+
+
+        <div class="product-card">
+
+            <div class="product-icon">+</div>
+
+            <h3>
+                Accessories
+            </h3>
+
+            <p>
+                Browse accessories
+                and essentials available
+                in store.
+            </p>
+
+        </div>
+
+
+        <div class="product-card">
+
+            <div class="product-icon">!</div>
+
+            <h3>
+                Store Specials
+            </h3>
+
+            <p>
+                Check back for featured
+                products and in-store
+                specials.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ABOUT -->
+
+<section id="about">
+
+    <div class="section-label">
+        ABOUT SMOKE BOX
+    </div>
+
+    <h2>
+        Made for Midtown.
+    </h2>
+
+    <div class="about-box">
+
+        <p>
+            Smoke Box is a Midtown Houston smoke shop
+            focused on giving customers a straightforward
+            place to find smoke-shop products and accessories.
+        </p>
+
+        <p>
+            Stop by the store to see the current selection
+            and ask the team about what's in stock.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- VISIT -->
+
+<section id="visit">
+
+    <div class="section-label">
+        COME THROUGH
+    </div>
+
+    <h2>
+        Visit Smoke Box.
+    </h2>
+
+    <div class="visit-grid">
+
+        <div class="info-box">
+
+            <h3>
+                Location
+            </h3>
+
+            <p>
+                <strong>
+                    2204 Louisiana St
+                </strong>
+            </p>
+
+            <p>
+                Houston, TX 77002
+            </p>
+
+            <br>
+
+            <a
+                class="button primary"
+                target="_blank"
+                href="https://www.google.com/maps/search/?api=1&query=2204+Louisiana+St+Houston+TX+77002">
+
+                GET DIRECTIONS
+
+            </a>
+
+        </div>
+
+
+        <div class="info-box">
+
+            <h3>
+                Hours
+            </h3>
+
+            <p>
+                Monday – Saturday:
+                10:00 AM – 12:00 AM
+            </p>
+
+            <p>
+                Sunday:
+                12:00 PM – 12:00 AM
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- CONTACT -->
+
+<section id="contact">
+
+    <div class="section-label">
+        CONTACT
+    </div>
+
+    <h2>
+        Got a question?
+    </h2>
+
+    <div class="info-box">
+
+        <p>
+            <strong>Phone:</strong>
+            <a href="tel:+17132813614">
+                (713) 281-3614
+            </a>
+        </p>
+
+        <p>
+            <strong>Location:</strong>
+            Midtown Houston
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    <p>
+        © 2026 <strong>Smoke Box</strong>
+        Smoke Shop.
+        All rights reserved.
+    </p>
+
+    <br>
+
+    <p>
+        21+ to purchase tobacco, e-cigarette
+        and other age-restricted products.
+        Please follow all applicable laws.
+    </p>
+
+</footer>
+
+</body>
+</html>
