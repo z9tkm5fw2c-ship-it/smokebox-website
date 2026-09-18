@@ -188,6 +188,8 @@ section {
   margin-bottom: 35px;
 }
 
+/* CLICKABLE CATEGORY CARDS */
+
 .cards {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -195,16 +197,20 @@ section {
 }
 
 .card {
+  display: block;
   background: #111;
   border: 1px solid #242424;
   padding: 28px;
   border-radius: 10px;
-  transition: .2s;
+  transition: .25s;
+  cursor: pointer;
 }
 
 .card:hover {
   border-color: #c8ff32;
-  transform: translateY(-4px);
+  transform: translateY(-6px);
+  background: #151515;
+  box-shadow: 0 8px 25px rgba(200,255,50,.12);
 }
 
 .card h3 {
@@ -214,6 +220,36 @@ section {
 
 .card p {
   color: #aaa;
+}
+
+/* CATEGORY SECTIONS */
+
+.category-section {
+  max-width: 1200px;
+  margin: 70px auto 0;
+  padding: 45px;
+  background: #101010;
+  border: 1px solid #252525;
+  border-radius: 14px;
+}
+
+.category-section h2 {
+  color: #c8ff32;
+  font-size: 35px;
+  margin-bottom: 10px;
+}
+
+.category-section p {
+  color: #aaa;
+  margin-bottom: 25px;
+}
+
+.category-message {
+  padding: 25px;
+  border: 1px dashed #444;
+  border-radius: 10px;
+  color: #888;
+  text-align: center;
 }
 
 /* GALLERY */
@@ -348,10 +384,6 @@ footer {
     min-height: 80vh;
   }
 
-  .hero-image {
-    object-fit: contain;
-  }
-
   .hero h1 {
     font-size: 58px;
   }
@@ -388,6 +420,10 @@ footer {
 
   .featured-photo {
     max-height: 600px;
+  }
+
+  .category-section {
+    padding: 30px 20px;
   }
 
   .contact h2 {
@@ -467,7 +503,7 @@ footer {
 
     <h2>THE SHOP</h2>
 
-    <p>Find your setup.</p>
+    <p>Click a category to see what's available.</p>
 
   </div>
 
@@ -481,48 +517,150 @@ footer {
 
     <div class="cards">
 
-      <div class="card">
+      <a href="#vapes" class="card">
         <h3>Vapes & Devices</h3>
         <p>
-          Browse our selection of devices and related accessories in store.
+          Click to see vapes, devices and related products.
         </p>
-      </div>
+      </a>
 
-      <div class="card">
+      <a href="#glass" class="card">
         <h3>Glass</h3>
         <p>
-          Check out our selection of glass pieces and accessories.
+          Click to see glass pieces and accessories.
         </p>
-      </div>
+      </a>
 
-      <div class="card">
+      <a href="#rolling" class="card">
         <h3>Rolling Supplies</h3>
         <p>
-          Papers, cones, grinders and other rolling accessories.
+          Click to see papers, cones, grinders and more.
         </p>
-      </div>
+      </a>
 
-      <div class="card">
+      <a href="#hookah" class="card">
         <h3>Hookah</h3>
         <p>
-          Hookah products and accessories for your setup.
+          Click to see hookah products and accessories.
         </p>
-      </div>
+      </a>
 
-      <div class="card">
+      <a href="#accessories" class="card">
         <h3>Accessories</h3>
         <p>
-          Browse accessories and smoke-shop essentials available in store.
+          Click to see smoke-shop accessories and essentials.
         </p>
-      </div>
+      </a>
 
-      <div class="card">
+      <a href="#specials" class="card">
         <h3>Store Specials</h3>
         <p>
-          Check back for featured products and in-store specials.
+          Click to see featured products and specials.
         </p>
-      </div>
+      </a>
 
+    </div>
+
+  </div>
+
+
+  <!-- VAPES -->
+
+  <div id="vapes" class="category-section">
+
+    <h2>Vapes & Devices</h2>
+
+    <p>
+      Browse our selection of vapes and devices available in store.
+    </p>
+
+    <div class="category-message">
+      Product listings coming soon.
+    </div>
+
+  </div>
+
+
+  <!-- GLASS -->
+
+  <div id="glass" class="category-section">
+
+    <h2>Glass</h2>
+
+    <p>
+      Browse our selection of glass pieces available in store.
+    </p>
+
+    <div class="category-message">
+      Product listings coming soon.
+    </div>
+
+  </div>
+
+
+  <!-- ROLLING -->
+
+  <div id="rolling" class="category-section">
+
+    <h2>Rolling Supplies</h2>
+
+    <p>
+      Papers, cones, grinders and other rolling accessories.
+    </p>
+
+    <div class="category-message">
+      Product listings coming soon.
+    </div>
+
+  </div>
+
+
+  <!-- HOOKAH -->
+
+  <div id="hookah" class="category-section">
+
+    <h2>Hookah</h2>
+
+    <p>
+      Hookah products and accessories available in store.
+    </p>
+
+    <div class="category-message">
+      Product listings coming soon.
+    </div>
+
+  </div>
+
+
+  <!-- ACCESSORIES -->
+
+  <div id="accessories" class="category-section">
+
+    <h2>Accessories</h2>
+
+    <p>
+      Browse smoke-shop accessories and essentials.
+    </p>
+
+    <div class="category-message">
+      Product listings coming soon.
+    </div>
+
+  </div>
+
+
+  <!-- SPECIALS -->
+
+  <div id="specials" class="category-section">
+
+    <h2>Store Specials</h2>
+
+    <p>
+      Check back for featured products and in-store specials.
+    </p>
+
+    <div class="category-message">
+      Specials will be posted here soon.
     </div>
 
   </div>
