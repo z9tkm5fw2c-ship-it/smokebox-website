@@ -3,17 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <title>Smoke Box | Midtown Houston</title>
-
-  <meta name="description"
-    content="Smoke Box Smoke Shop in Midtown Houston. Visit us for smoke shop products, accessories, glass, vapes and more.">
 
   <style>
     * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
     }
 
     html {
@@ -23,7 +19,7 @@
     body {
       font-family: Arial, Helvetica, sans-serif;
       background: #080808;
-      color: #ffffff;
+      color: #f5f5f5;
       line-height: 1.6;
     }
 
@@ -32,63 +28,52 @@
       text-decoration: none;
     }
 
-    /* NAVIGATION */
-
-    nav {
+    header {
       position: sticky;
       top: 0;
-      z-index: 1000;
+      z-index: 100;
       background: rgba(8, 8, 8, 0.95);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid #242424;
+      border-bottom: 1px solid #222;
+      backdrop-filter: blur(10px);
     }
 
-    .nav-container {
+    .nav {
       max-width: 1200px;
       margin: auto;
       padding: 18px 25px;
-
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
 
     .logo {
-      font-size: 25px;
+      font-size: 24px;
       font-weight: 900;
-      letter-spacing: 3px;
-    }
-
-    .logo span {
+      letter-spacing: 2px;
       color: #c8ff32;
     }
 
-    .nav-links {
+    nav {
       display: flex;
-      gap: 30px;
-      list-style: none;
-      font-size: 14px;
+      gap: 25px;
+      font-size: 13px;
       font-weight: bold;
     }
 
-    .nav-links a:hover {
+    nav a:hover {
       color: #c8ff32;
     }
 
-    /* HERO */
-
     .hero {
-      min-height: 88vh;
-
+      min-height: 80vh;
       display: flex;
-      justify-content: center;
       align-items: center;
-
+      justify-content: center;
       text-align: center;
-      padding: 60px 25px;
-
+      padding: 80px 25px;
       background:
-        radial-gradient(circle at center, #252525 0%, #080808 60%);
+        linear-gradient(rgba(0,0,0,.65), rgba(0,0,0,.8)),
+        url("store-front.jpg") center/cover no-repeat;
     }
 
     .hero-content {
@@ -97,244 +82,220 @@
 
     .eyebrow {
       color: #c8ff32;
-      font-size: 13px;
-      font-weight: 900;
+      font-weight: bold;
       letter-spacing: 4px;
-      margin-bottom: 18px;
+      font-size: 13px;
+      margin-bottom: 15px;
     }
 
     .hero h1 {
-      font-size: clamp(65px, 12vw, 140px);
-      line-height: 0.85;
-      letter-spacing: -7px;
-      font-weight: 950;
-    }
-
-    .hero h1 span {
-      color: #c8ff32;
+      font-size: clamp(60px, 12vw, 140px);
+      line-height: .9;
+      font-weight: 900;
+      letter-spacing: -5px;
+      margin-bottom: 25px;
     }
 
     .hero p {
-      max-width: 650px;
-      margin: 30px auto;
-      color: #c5c5c5;
-      font-size: 19px;
-    }
-
-    .buttons {
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-      flex-wrap: wrap;
+      max-width: 600px;
+      margin: auto;
+      color: #ddd;
+      font-size: 18px;
     }
 
     .button {
       display: inline-block;
-      padding: 15px 25px;
-      border-radius: 50px;
-
-      font-weight: 900;
-      font-size: 14px;
-
+      margin-top: 30px;
+      padding: 14px 25px;
       background: #c8ff32;
       color: #000;
-
-      transition: 0.2s;
+      font-weight: 900;
+      border-radius: 4px;
     }
 
     .button:hover {
-      transform: translateY(-3px);
+      background: #fff;
     }
 
-    .button-outline {
-      background: transparent;
-      border: 1px solid #444;
-      color: #fff;
-    }
-
-    .button-outline:hover {
-      border-color: #c8ff32;
-      color: #c8ff32;
-    }
-
-    .age-notice {
-      margin-top: 25px;
-      color: #888;
+    .notice {
+      text-align: center;
+      padding: 14px 20px;
+      background: #111;
+      color: #aaa;
       font-size: 13px;
+      border-bottom: 1px solid #222;
     }
-
-    /* GENERAL SECTIONS */
 
     section {
       max-width: 1200px;
       margin: auto;
-      padding: 100px 25px;
+      padding: 90px 25px;
     }
 
     .section-label {
       color: #c8ff32;
-      font-size: 12px;
-      font-weight: 900;
+      font-size: 13px;
+      font-weight: bold;
       letter-spacing: 3px;
-      text-transform: uppercase;
+      margin-bottom: 10px;
     }
 
     h2 {
-      font-size: clamp(38px, 6vw, 60px);
+      font-size: clamp(38px, 6vw, 65px);
       line-height: 1;
-      margin: 12px 0 45px;
+      margin-bottom: 45px;
     }
 
-    /* SHOP */
+    /* FEATURE PHOTO */
+
+    .featured-photo {
+      width: 100%;
+      height: 500px;
+      object-fit: cover;
+      border-radius: 12px;
+      display: block;
+      margin-bottom: 25px;
+    }
+
+    /* SHOP CARDS */
 
     .shop-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
+      gap: 18px;
     }
 
     .shop-card {
-      background: #131313;
-      border: 1px solid #272727;
-      border-radius: 22px;
-      padding: 35px;
-
-      min-height: 210px;
-
-      transition: 0.25s;
+      border: 1px solid #292929;
+      padding: 30px;
+      border-radius: 8px;
+      background: #0e0e0e;
     }
 
     .shop-card:hover {
-      transform: translateY(-5px);
       border-color: #c8ff32;
-    }
-
-    .shop-icon {
-      font-size: 35px;
-      margin-bottom: 20px;
+      transform: translateY(-3px);
+      transition: .2s;
     }
 
     .shop-card h3 {
-      font-size: 23px;
       margin-bottom: 10px;
+      color: #fff;
     }
 
     .shop-card p {
       color: #999;
+      font-size: 14px;
+    }
+
+    /* GALLERY */
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
+    }
+
+    .gallery img {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+      border-radius: 10px;
+      display: block;
+      transition: .25s;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.02);
+      opacity: .85;
+    }
+
+    .gallery .wide {
+      grid-column: span 2;
     }
 
     /* ABOUT */
 
-    .about-box {
-      background: #131313;
-      border: 1px solid #272727;
-      border-radius: 25px;
-      padding: 45px;
-
-      max-width: 850px;
+    .about {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      align-items: center;
     }
 
-    .about-box p {
-      color: #b8b8b8;
-      font-size: 18px;
-      margin-bottom: 15px;
+    .about img {
+      width: 100%;
+      height: 450px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+
+    .about-text p {
+      color: #aaa;
+      margin-bottom: 20px;
     }
 
     /* VISIT */
 
+    .visit {
+      border-top: 1px solid #222;
+      border-bottom: 1px solid #222;
+    }
+
     .visit-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 25px;
+      gap: 50px;
     }
 
-    .info-card {
-      background: #131313;
-      border: 1px solid #272727;
-      border-radius: 25px;
-      padding: 40px;
+    .visit h3 {
+      color: #c8ff32;
+      margin-bottom: 8px;
     }
 
-    .info-card h3 {
-      font-size: 25px;
-      margin-bottom: 20px;
-    }
-
-    .info-card p {
+    .visit p {
       color: #aaa;
-      margin: 8px 0;
-    }
-
-    .info-card strong {
-      color: #fff;
-    }
-
-    /* CONTACT */
-
-    .contact-box {
-      background: #c8ff32;
-      color: #000;
-
-      border-radius: 25px;
-      padding: 50px;
-      text-align: center;
-    }
-
-    .contact-box h2 {
-      margin-bottom: 15px;
-    }
-
-    .contact-box p {
       margin-bottom: 25px;
     }
 
-    .phone-button {
-      display: inline-block;
-      padding: 14px 25px;
-      background: #000;
-      color: #fff;
-      border-radius: 50px;
-      font-weight: bold;
-    }
-
-    /* FOOTER */
-
     footer {
-      border-top: 1px solid #242424;
       text-align: center;
-      padding: 40px 25px;
-      color: #777;
+      padding: 35px 20px;
+      color: #666;
       font-size: 13px;
     }
 
-    footer strong {
-      color: #c8ff32;
-    }
-
-    /* MOBILE */
-
     @media (max-width: 800px) {
-
-      .nav-links {
-        display: none;
+      nav {
+        gap: 12px;
+        font-size: 11px;
       }
 
-      .shop-grid {
-        grid-template-columns: 1fr;
+      .hero {
+        min-height: 70vh;
       }
 
+      .shop-grid,
+      .gallery,
+      .about,
       .visit-grid {
         grid-template-columns: 1fr;
       }
 
-      .hero h1 {
-        letter-spacing: -4px;
+      .gallery .wide {
+        grid-column: span 1;
       }
 
-      .about-box,
-      .info-card,
-      .contact-box {
-        padding: 30px;
+      .featured-photo {
+        height: 350px;
+      }
+
+      .gallery img {
+        height: 300px;
+      }
+
+      .about img {
+        height: 350px;
       }
     }
   </style>
@@ -342,230 +303,177 @@
 
 <body>
 
-  <!-- NAVIGATION -->
+  <header>
+    <div class="nav">
+      <a href="#" class="logo">SMOKE BOX</a>
 
-  <nav>
-    <div class="nav-container">
-
-      <a href="#" class="logo">
-        SMOKE <span>BOX</span>
-      </a>
-
-      <ul class="nav-links">
-        <li><a href="#shop">SHOP</a></li>
-        <li><a href="#about">ABOUT</a></li>
-        <li><a href="#visit">VISIT</a></li>
-        <li><a href="#contact">CONTACT</a></li>
-      </ul>
-
+      <nav>
+        <a href="#shop">SHOP</a>
+        <a href="#gallery">PHOTOS</a>
+        <a href="#about">ABOUT</a>
+        <a href="#visit">VISIT</a>
+      </nav>
     </div>
-  </nav>
+  </header>
 
+  <div class="notice">
+    21+ to purchase tobacco, e-cigarette and other age-restricted products.
+  </div>
 
-  <!-- HERO -->
-
-  <header class="hero">
-
+  <section class="hero">
     <div class="hero-content">
+      <div class="eyebrow">MIDTOWN HOUSTON</div>
 
-      <div class="eyebrow">
-        MIDTOWN HOUSTON
-      </div>
-
-      <h1>
-        SMOKE <span>BOX</span>
-      </h1>
+      <h1>SMOKE BOX</h1>
 
       <p>
         Your Midtown Houston smoke shop for quality products,
         accessories and more. Come check us out.
       </p>
 
-      <div class="buttons">
-
-        <a href="#shop" class="button">
-          EXPLORE THE SHOP
-        </a>
-
-        <a href="#visit" class="button button-outline">
-          FIND US
-        </a>
-
-      </div>
-
-      <div class="age-notice">
-        21+ to purchase tobacco, e-cigarette and other
-        age-restricted products.
-      </div>
-
+      <a href="#shop" class="button">EXPLORE THE SHOP</a>
     </div>
-
-  </header>
-
-
-  <!-- SHOP -->
+  </section>
 
   <section id="shop">
 
-    <div class="section-label">
-      THE SHOP
-    </div>
+    <div class="section-label">THE SHOP</div>
+    <h2>Find your setup.</h2>
 
-    <h2>
-      Find your setup.
-    </h2>
+    <img
+      src="store-inside.jpg"
+      alt="Inside Smoke Box Smoke Shop"
+      class="featured-photo"
+    >
 
     <div class="shop-grid">
 
       <div class="shop-card">
-        <div class="shop-icon">◉</div>
-
-        <h3>
-          Vapes & Devices
-        </h3>
-
-        <p>
-          Browse our selection of devices and related
-          accessories in store.
-        </p>
+        <h3>Vapes & Devices</h3>
+        <p>Browse our selection of devices and related accessories in store.</p>
       </div>
-
 
       <div class="shop-card">
-        <div class="shop-icon">◇</div>
-
-        <h3>
-          Glass
-        </h3>
-
-        <p>
-          Check out our selection of glass pieces
-          and accessories.
-        </p>
+        <h3>Glass</h3>
+        <p>Check out our selection of glass pieces and accessories.</p>
       </div>
-
 
       <div class="shop-card">
-        <div class="shop-icon">✦</div>
-
-        <h3>
-          Rolling Supplies
-        </h3>
-
-        <p>
-          Papers, cones, grinders and other
-          rolling accessories.
-        </p>
+        <h3>Rolling Supplies</h3>
+        <p>Papers, cones, grinders and other rolling accessories.</p>
       </div>
-
 
       <div class="shop-card">
-        <div class="shop-icon">◎</div>
-
-        <h3>
-          Hookah
-        </h3>
-
-        <p>
-          Hookah products and accessories
-          for your setup.
-        </p>
+        <h3>Hookah</h3>
+        <p>Hookah products and accessories for your setup.</p>
       </div>
-
 
       <div class="shop-card">
-        <div class="shop-icon">+</div>
-
-        <h3>
-          Accessories
-        </h3>
-
-        <p>
-          Browse accessories and smoke-shop
-          essentials available in store.
-        </p>
+        <h3>Accessories</h3>
+        <p>Browse accessories and smoke-shop essentials available in store.</p>
       </div>
-
 
       <div class="shop-card">
-        <div class="shop-icon">★</div>
-
-        <h3>
-          Store Specials
-        </h3>
-
-        <p>
-          Check back for featured products
-          and in-store specials.
-        </p>
+        <h3>Store Specials</h3>
+        <p>Check back for featured products and in-store specials.</p>
       </div>
+
+    </div>
+  </section>
+
+  <section id="gallery">
+
+    <div class="section-label">SMOKE BOX</div>
+    <h2>Inside the shop.</h2>
+
+    <div class="gallery">
+
+      <img
+        src="store-front.jpg"
+        alt="Smoke Box storefront"
+        class="wide"
+      >
+
+      <img
+        src="store-inside2.jpg"
+        alt="Inside Smoke Box"
+      >
+
+      <img
+        src="store-product.jpg"
+        alt="Smoke Box products"
+      >
+
+      <img
+        src="store-product2.jpg"
+        alt="Smoke Box product display"
+      >
+
+      <img
+        src="store-product3.jpg"
+        alt="Smoke Box product selection"
+      >
+
+      <img
+        src="store-product4.jpg"
+        alt="Smoke Box products"
+      >
+
+      <img
+        src="store-product5.jpg"
+        alt="Smoke Box product display"
+      >
 
     </div>
 
   </section>
-
-
-  <!-- ABOUT -->
 
   <section id="about">
 
-    <div class="section-label">
-      ABOUT SMOKE BOX
-    </div>
+    <div class="about">
 
-    <h2>
-      Made for Midtown.
-    </h2>
+      <img
+        src="store-inside2.jpg"
+        alt="Smoke Box interior"
+      >
 
-    <div class="about-box">
+      <div class="about-text">
 
-      <p>
-        Smoke Box is a Midtown Houston smoke shop
-        focused on giving customers a straightforward
-        place to find smoke-shop products and accessories.
-      </p>
+        <div class="section-label">ABOUT SMOKE BOX</div>
 
-      <p>
-        Stop by the store to see what's available,
-        check out the selection and talk with the team.
-      </p>
+        <h2>Made for Midtown.</h2>
+
+        <p>
+          Smoke Box is a Midtown Houston smoke shop focused on giving
+          customers a straightforward place to find smoke-shop products
+          and accessories.
+        </p>
+
+        <p>
+          Stop by the store to see what's available, check out the
+          selection and talk with the team.
+        </p>
+
+      </div>
 
     </div>
 
   </section>
 
+  <section id="visit" class="visit">
 
-  <!-- VISIT -->
-
-  <section id="visit">
-
-    <div class="section-label">
-      COME THROUGH
-    </div>
-
-    <h2>
-      Visit Smoke Box.
-    </h2>
+    <div class="section-label">COME THROUGH</div>
+    <h2>Visit Smoke Box.</h2>
 
     <div class="visit-grid">
 
-      <div class="info-card">
-
-        <h3>
-          📍 Location
-        </h3>
+      <div>
+        <h3>📍 Location</h3>
 
         <p>
-          <strong>
-            2204 Louisiana St
-          </strong>
-        </p>
-
-        <p>
+          2204 Louisiana St<br>
           Houston, TX 77002
         </p>
-
-        <br>
 
         <a
           href="https://www.google.com/maps/search/?api=1&query=2204+Louisiana+St+Houston+TX+77002"
@@ -574,81 +482,35 @@
         >
           GET DIRECTIONS
         </a>
-
       </div>
 
-
-      <div class="info-card">
-
-        <h3>
-          🕐 Hours
-        </h3>
+      <div>
+        <h3>🕐 Hours</h3>
 
         <p>
-          <strong>Monday – Saturday</strong>
-        </p>
-
-        <p>
+          Monday – Saturday<br>
           10:00 AM – 12:00 AM
         </p>
 
-        <br>
-
         <p>
-          <strong>Sunday</strong>
-        </p>
-
-        <p>
+          Sunday<br>
           12:00 PM – 12:00 AM
         </p>
 
+        <h3>📞 Contact</h3>
+
+        <p>
+          (713) 281-3614
+        </p>
       </div>
 
     </div>
 
   </section>
 
-
-  <!-- CONTACT -->
-
-  <section id="contact">
-
-    <div class="contact-box">
-
-      <h2>
-        Got a question?
-      </h2>
-
-      <p>
-        Give Smoke Box a call or stop by the store.
-      </p>
-
-      <a
-        href="tel:+17132813614"
-        class="phone-button"
-      >
-        CALL (713) 281-3614
-      </a>
-
-    </div>
-
-  </section>
-
-
-  <!-- FOOTER -->
-
   <footer>
-
-    <p>
-      © 2026 <strong>Smoke Box</strong>.
-      All rights reserved.
-    </p>
-
-    <p>
-      21+ to purchase tobacco, e-cigarette and
-      other age-restricted products.
-    </p>
-
+    © 2026 Smoke Box. All rights reserved.<br>
+    21+ to purchase tobacco, e-cigarette and other age-restricted products.
   </footer>
 
 </body>
